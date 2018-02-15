@@ -1,5 +1,6 @@
 #include "deck.h"
 #include <algorithm>
+#include <ctime>
 
 // Constructors
 Deck::Deck() {
@@ -75,7 +76,9 @@ void Deck::fill() {
 }
 
 void Deck::shuffle() {
-    std::random_shuffle(&cards[0], &cards[51]);
+    srand(time(0));
+
+    std::random_shuffle(&cards[0], &cards[52]);
 }
 
 int Deck::calcPoints(int value) {
