@@ -6,7 +6,8 @@ int main() {
 
     Deck* x = new Deck();
 
-    x->getCard(12).display();
+    x->shuffle();
+    x->display();
 
     return 0;
 }
