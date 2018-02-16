@@ -1,11 +1,12 @@
 # depslib dependency file v1.0
-1518821729 source:d:\moose\coding\cpp\blackjack\main.cpp
+1518823954 source:d:\moose\coding\cpp\blackjack\main.cpp
 	<iostream>
 	"src/player.h"
 	"src/deck.h"
 
-1518822729 d:\moose\coding\cpp\blackjack\src\player.h
+1518823558 d:\moose\coding\cpp\blackjack\src\player.h
 	<iostream>
+	<vector>
 	"deck.h"
 
 1518822846 d:\moose\coding\cpp\blackjack\src\deck.h
@@ -17,7 +18,7 @@
 1518719404 source:d:\moose\coding\cpp\blackjack\src\card.cpp
 	"card.h"
 
-1518822919 source:d:\moose\coding\cpp\blackjack\src\player.cpp
+1518824110 source:d:\moose\coding\cpp\blackjack\src\player.cpp
 	"player.h"
 	"deck.h"
 

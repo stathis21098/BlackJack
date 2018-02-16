@@ -4,6 +4,7 @@
 // Constructors
 Player::Player() {
     this->name = "Player";
+    this->hand = new std::vector<Card>;
 }
 
 Player::Player(std::string name) {
