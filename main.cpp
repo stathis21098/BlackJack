@@ -7,7 +7,9 @@ int main() {
     Deck* x = new Deck();
 
     x->shuffle();
-    x->display();
+    x->getCard(0).display();
+
+    x->getCard(51).display();
 
     return 0;
 }
