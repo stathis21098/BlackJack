@@ -5,11 +5,13 @@
 int main() {
 
     Deck* x = new Deck();
+    Player* y = new Player("Stathis");
 
-    x->shuffle();
-    x->getCard(0).display();
+    std::cout << x->getRemaining() << std::endl;
 
-    x->getCard(51).display();
+    y->draw(*x);
+
+    std::cout << x->getRemaining() << std::endl;
 
     return 0;
 }

@@ -5,11 +5,10 @@
 // Constructors
 Deck::Deck() {
     this->cards = new Card[52]();
-    this->count = 0;
     this->fill();
 }
 
-// Deconstructors
+// De-constructors
 Deck::~Deck() {
     delete(this->cards);
 }
@@ -23,6 +22,10 @@ void Deck::setCard(Card card, int pos) {
     this->cards[pos] = card;
 }
 
+void Deck::setRemaining(int remaining) {
+    this->remaining = remaining;
+}
+
 // Getters
 int Deck::getCount() {
     return this->count;
@@ -32,8 +35,15 @@ Card Deck::getCard(int pos) {
     return this->cards[pos];
 }
 
+int Deck::getRemaining() {
+    return this->remaining;
+}
+
 // Functions
 void Deck::fill() {
+    this->count = 0;
+    this->remaining = 52;
+
     // Clubs Init
     for(int i = 0; i < 13; i++) {
         this->cards[this->count].setSuit("Clubs");
@@ -78,7 +88,7 @@ void Deck::fill() {
 void Deck::shuffle() {
     srand(time(0));
 
-    std::random_shuffle(&cards[0], &cards[52]);
+    std::random_shuffle(&this->cards[0], &this->cards[52]);
 }
 
 int Deck::calcPoints(int value) {

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include "deck.h"
 
 class Player {
 private:
@@ -15,4 +16,7 @@ public:
 
     // Getters
     std::string getName();
+
+    // Functions
+    void draw(Deck&);
 };

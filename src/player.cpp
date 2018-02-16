@@ -1,5 +1,7 @@
 #include "player.h"
+#include "deck.h"
 
+// Constructors
 Player::Player() {
     this->name = "Player";
 }
@@ -16,4 +18,9 @@ void Player::setName(std::string name) {
 // Getters
 std::string Player::getName() {
     return this->name;
+}
+
+// Functions
+void Player::draw(Deck &deck) {
+    deck.setRemaining(deck.getRemaining() - 1);
 }
