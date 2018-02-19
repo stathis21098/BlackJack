@@ -1,15 +1,17 @@
 # depslib dependency file v1.0
-1519067703 source:d:\moose\coding\cpp\blackjack\main.cpp
+1519080008 source:d:\moose\coding\cpp\blackjack\main.cpp
 	<iostream>
 	"src/player.h"
 	"src/deck.h"
+	"src/functions.h"
 
-1519067514 d:\moose\coding\cpp\blackjack\src\player.h
+1519072753 d:\moose\coding\cpp\blackjack\src\player.h
 	<iostream>
 	<vector>
 	"deck.h"
 
-1519067593 d:\moose\coding\cpp\blackjack\src\deck.h
+1519077867 d:\moose\coding\cpp\blackjack\src\deck.h
+	<vector>
 	"card.h"
 
 1519067624 d:\moose\coding\cpp\blackjack\src\card.h
@@ -18,17 +20,19 @@
 1519067630 source:d:\moose\coding\cpp\blackjack\src\card.cpp
 	"card.h"
 
-1519067514 source:d:\moose\coding\cpp\blackjack\src\player.cpp
+1519077892 source:d:\moose\coding\cpp\blackjack\src\player.cpp
 	"player.h"
 	"deck.h"
 
-1519067611 source:d:\moose\coding\cpp\blackjack\src\deck.cpp
+1519077887 source:d:\moose\coding\cpp\blackjack\src\deck.cpp
 	"deck.h"
 	<algorithm>
 	<ctime>
 
-1519066940 source:d:\moose\coding\cpp\blackjack\src\functions.cpp
+1519080210 source:d:\moose\coding\cpp\blackjack\src\functions.cpp
+	<iostream>
+	<windows.h>
 	"functions.h"
 
-1519066906 d:\moose\coding\cpp\blackjack\src\functions.h
+1519079984 d:\moose\coding\cpp\blackjack\src\functions.h
 

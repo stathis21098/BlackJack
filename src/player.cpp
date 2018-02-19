@@ -26,8 +26,8 @@ Card Player::getCard(const int pos) {
 
 // Functions
 void Player::draw(Deck &deck) {
-    this->hand.push_back(deck.getCard(deck.getRemaining() - 1));
-    deck.setRemaining(deck.getRemaining() - 1);
+    this->hand.push_back(deck.getCard(deck.size() - 1));
+    deck.removeTopCard();
 }
 
 void Player::displayHand() {
@@ -37,12 +37,28 @@ void Player::displayHand() {
     }
 }
 
-unsigned int Player::getHandPoints() {
+unsigned int Player::handPoints() {
     unsigned int sum = 0;
+    bool found = false;
 
     for(unsigned int i = 0; i < hand.size(); i++) {
-        sum += hand[i].getPoints();
+        unsigned int points = hand[i].getPoints();
+
+        sum += points;
+
+        if(points == 11) {
+            found = true;
+        }
+
+        if(found && points + sum > 21) {
+            sum -= 10;
+            found = false;
+        }
     }
 
     return sum;
+}
+
+unsigned int Player::handSize() {
+    return this->hand.size();
 }

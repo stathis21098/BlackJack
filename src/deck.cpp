@@ -4,84 +4,71 @@
 
 // Constructors
 Deck::Deck() {
-    this->cards = new Card[52]();
     this->fill();
 }
 
-// De-constructors
-Deck::~Deck() {
-    delete(this->cards);
-}
-
 // Setters
-void Deck::setCount(const int count) {
-    this->count = count;
-}
-
 void Deck::setCard(const Card card, const int pos) {
     this->cards[pos] = card;
 }
 
-void Deck::setRemaining(const int remaining) {
-    this->remaining = remaining;
-}
-
 // Getters
-unsigned int Deck::getCount() {
-    return this->count;
-}
-
 Card Deck::getCard(const int pos) {
     return this->cards[pos];
 }
 
-unsigned int Deck::getRemaining() {
-    return this->remaining;
-}
-
 // Functions
 void Deck::fill() {
-    this->count = 0;
-    this->remaining = 52;
-
     // Clubs Init
     for(unsigned int i = 0; i < 13; i++) {
-        this->cards[this->count].setSuit("Clubs");
-        this->cards[this->count].setColor("Black");
-        this->cards[this->count].setValue(i + 1);
-        this->cards[this->count].setPoints(this->calcPoints(i + 1));
+        Card* temp = new Card();
 
-        this->count++;
+        temp->setSuit("Clubs");
+        temp->setColor("Black");
+        temp->setValue(i + 1);
+        temp->setPoints(this->calcPoints(i + 1));
+
+        this->cards.push_back(*temp);
+        delete temp;
     }
 
     // Spades Init
     for(unsigned int i = 0; i < 13; i++) {
-        this->cards[this->count].setSuit("Spades");
-        this->cards[this->count].setColor("Black");
-        this->cards[this->count].setValue(i + 1);
-        this->cards[this->count].setPoints(this->calcPoints(i + 1));
+        Card* temp = new Card();
 
-        this->count++;
+        temp->setSuit("Spades");
+        temp->setColor("Black");
+        temp->setValue(i + 1);
+        temp->setPoints(this->calcPoints(i + 1));
+
+        this->cards.push_back(*temp);
+        delete temp;
     }
 
     // Diamonds Init
     for(unsigned int i = 0; i < 13; i++) {
-        this->cards[this->count].setSuit("Diamonds");
-        this->cards[this->count].setColor("Red");
-        this->cards[this->count].setValue(i + 1);
-        this->cards[this->count].setPoints(this->calcPoints(i + 1));
+        Card* temp = new Card();
 
-        this->count++;
+        temp->setSuit("Diamonds");
+        temp->setColor("Red");
+        temp->setValue(i + 1);
+        temp->setPoints(this->calcPoints(i + 1));
+
+        this->cards.push_back(*temp);
+        delete temp;
     }
 
     // Hearts Init
     for(unsigned int i = 0; i < 13; i++) {
-        this->cards[this->count].setSuit("Hearts");
-        this->cards[this->count].setColor("Red");
-        this->cards[this->count].setValue(i + 1);
-        this->cards[this->count].setPoints(this->calcPoints(i + 1));
+        Card* temp = new Card();
 
-        this->count++;
+        temp->setSuit("Hearts");
+        temp->setColor("Red");
+        temp->setValue(i + 1);
+        temp->setPoints(this->calcPoints(i + 1));
+
+        this->cards.push_back(*temp);
+        delete temp;
     }
 }
 
@@ -107,4 +94,12 @@ void Deck::display() {
     for(int i = 0; i < 52; i++) {
         this->cards[i].display();
     }
+}
+
+unsigned int Deck::size() {
+    return cards.size();
+}
+
+void Deck::removeTopCard() {
+    this->cards.pop_back();
 }

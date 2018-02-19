@@ -23,5 +23,6 @@ public:
     // Functions
     void draw(Deck&);
     void displayHand();
-    unsigned int getHandPoints();
+    unsigned int handPoints();
+    unsigned int handSize();
 };
