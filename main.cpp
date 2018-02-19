@@ -3,8 +3,23 @@
 #include "src/deck.h"
 
 int main() {
-    Player* y = new Player("Stathis");
 
-    std::cout << sizeof(&y->hand) << std::endl;
+    Deck* deck = new Deck();
+
+    Player* player = new Player();
+
+    deck->shuffle();
+
+    player->draw(*deck);
+    player->draw(*deck);
+    player->draw(*deck);
+    player->draw(*deck);
+
+    std::cout << player->getHandPoints() << std::endl;
+
+    delete player;
+
+    delete deck;
+
     return 0;
 }

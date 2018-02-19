@@ -15,20 +15,20 @@ public:
     ~Deck();
 
     // Setters
-    void setCount(int);
-    void setCard(Card, int);
-    void setRemaining(int);
+    void setCount(const int);
+    void setCard(const Card, const int);
+    void setRemaining(const int);
 
     // Getters
-    int getCount();
-    Card getCard(int);
-    int getRemaining();
+    unsigned int getCount();
+    Card getCard(const int);
+    unsigned int getRemaining();
 
     // Functions
     void fill();
     void shuffle();
 
-    int calcPoints(int);
+    unsigned int calcPoints(const int);
     void display();
 
 };

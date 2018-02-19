@@ -14,28 +14,28 @@ Deck::~Deck() {
 }
 
 // Setters
-void Deck::setCount(int count) {
+void Deck::setCount(const int count) {
     this->count = count;
 }
 
-void Deck::setCard(Card card, int pos) {
+void Deck::setCard(const Card card, const int pos) {
     this->cards[pos] = card;
 }
 
-void Deck::setRemaining(int remaining) {
+void Deck::setRemaining(const int remaining) {
     this->remaining = remaining;
 }
 
 // Getters
-int Deck::getCount() {
+unsigned int Deck::getCount() {
     return this->count;
 }
 
-Card Deck::getCard(int pos) {
+Card Deck::getCard(const int pos) {
     return this->cards[pos];
 }
 
-int Deck::getRemaining() {
+unsigned int Deck::getRemaining() {
     return this->remaining;
 }
 
@@ -45,7 +45,7 @@ void Deck::fill() {
     this->remaining = 52;
 
     // Clubs Init
-    for(int i = 0; i < 13; i++) {
+    for(unsigned int i = 0; i < 13; i++) {
         this->cards[this->count].setSuit("Clubs");
         this->cards[this->count].setColor("Black");
         this->cards[this->count].setValue(i + 1);
@@ -55,7 +55,7 @@ void Deck::fill() {
     }
 
     // Spades Init
-    for(int i = 0; i < 13; i++) {
+    for(unsigned int i = 0; i < 13; i++) {
         this->cards[this->count].setSuit("Spades");
         this->cards[this->count].setColor("Black");
         this->cards[this->count].setValue(i + 1);
@@ -65,7 +65,7 @@ void Deck::fill() {
     }
 
     // Diamonds Init
-    for(int i = 0; i < 13; i++) {
+    for(unsigned int i = 0; i < 13; i++) {
         this->cards[this->count].setSuit("Diamonds");
         this->cards[this->count].setColor("Red");
         this->cards[this->count].setValue(i + 1);
@@ -75,7 +75,7 @@ void Deck::fill() {
     }
 
     // Hearts Init
-    for(int i = 0; i < 13; i++) {
+    for(unsigned int i = 0; i < 13; i++) {
         this->cards[this->count].setSuit("Hearts");
         this->cards[this->count].setColor("Red");
         this->cards[this->count].setValue(i + 1);
@@ -91,7 +91,7 @@ void Deck::shuffle() {
     std::random_shuffle(&this->cards[0], &this->cards[52]);
 }
 
-int Deck::calcPoints(int value) {
+unsigned int Deck::calcPoints(const int value) {
     int points = 10;
 
     if(value == 1) {

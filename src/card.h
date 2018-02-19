@@ -11,18 +11,18 @@ private:
 public:
     // Constructors
     Card();
-    Card(int, std::string, int, std::string);
+    Card(const int, const std::string, const int, std::string);
 
     // Setters
-    void setPoints(int);
-    void setColor(std::string);
-    void setValue(int);
-    void setSuit(std::string);
+    void setPoints(const int);
+    void setColor(const std::string);
+    void setValue(const int);
+    void setSuit(const std::string);
 
     // Getters
-    int getPoints();
+    unsigned int getPoints();
     std::string getColor();
-    int getValue();
+    unsigned int getValue();
     std::string getSuit();
 
     // Functions

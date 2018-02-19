@@ -7,19 +7,21 @@
 class Player {
 private:
     std::string name;
-
+    std::vector<Card> hand;
 public:
-    std::vector<Card>* hand;
     // Constructors
     Player();
-    Player(std::string);
+    Player(const std::string);
 
     // Setters
-    void setName(std::string);
+    void setName(const std::string);
 
     // Getters
     std::string getName();
+    Card getCard(const int);
 
     // Functions
     void draw(Deck&);
+    void displayHand();
+    unsigned int getHandPoints();
 };

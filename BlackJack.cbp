@@ -33,6 +33,12 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="main.cpp" />
+		<Unit filename="src/card.cpp" />
+		<Unit filename="src/card.h" />
+		<Unit filename="src/deck.cpp" />
+		<Unit filename="src/deck.h" />
+		<Unit filename="src/player.cpp" />
+		<Unit filename="src/player.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
