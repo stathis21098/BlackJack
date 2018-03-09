@@ -1,0 +1,15 @@
+# Binary Files
+/card.o
+/deck.o
+/player.o
+/game.o
+/main.o
+
+# Makefile
+/Makefile
+
+# Git files
+# /.gitignore
+
+# Executables
+/main
