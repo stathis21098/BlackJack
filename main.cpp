@@ -1,10 +1,15 @@
 #include <iostream>
-#include "src/player.h"
-#include "src/deck.h"
+#include "src/game.h"
 
 int main() {
+    Game* game = new Game();
 
-    
+    while(game->getDeck()->size() > 0) {
+        std::cout << game->getDeck()->size() << std::endl;
+        game->getPlayer()->draw(*game->getDeck());
+    }
+
+    delete game;
 
     return 0;
 }

@@ -26,8 +26,14 @@ Card Player::getCard(const int pos) {
 
 // Functions
 void Player::draw(Deck &deck) {
-    this->hand.push_back(deck.getCard(deck.size() - 1));
-    deck.removeTopCard();
+    if(deck.size() > 0) {
+        this->hand.push_back(deck.getCard(deck.size() - 1));
+        deck.removeTopCard();
+    } else {
+        // Catching the erros of underfloating deck draw
+        std::cout << "Error, underfloating deck!\n";
+        std::cin.get();
+    }
 }
 
 void Player::displayHand() {
