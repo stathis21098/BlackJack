@@ -32,12 +32,11 @@ void Player::draw(Deck &deck) {
     } else {
         // Catching the erros of underfloating deck draw
         std::cout << "Error, underfloating deck!\n";
-        std::cin.get();
+        std::cin.ignore();
     }
 }
 
 void Player::displayHand() {
-
     for(unsigned int i = 0; i < this->hand.size(); i++) {
         this->getCard(i).display();
     }

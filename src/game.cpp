@@ -56,6 +56,35 @@ void Game::setDeck(Deck* deck) {
 
 // Functions
 bool Game::menu() {
-    system("clear");
-    std::cout << "Menu";
+
+    int choice;
+
+    do {
+        system("clear");
+
+        std::cout << "BlackJack\n\n";
+
+        std::cout << "[1] Play Game\n";
+        std::cout << "\n[0] Exit\n";
+        std::cout << ">> ";
+
+        std::cin >> choice;
+    } while(choice != 0 && (choice < 1 || choice > 1));
+
+    switch(choice) {
+    case 1:
+        // Play Game
+        std::cout << "play game\n";
+        std::cin.ignore().get();
+        break;
+    case 0:
+        // Exit
+        std::cout << "Thanks for playing!\n";
+        return false;
+    default:
+        std::cout << "Error, not a possible choice.\n";
+        break;
+    }
+
+    return true;
 }

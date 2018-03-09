@@ -4,10 +4,7 @@
 int main() {
     Game* game = new Game();
 
-    while(game->getDeck()->size() > 0) {
-        std::cout << game->getDeck()->size() << std::endl;
-        game->getPlayer()->draw(*game->getDeck());
-    }
+    while(game->menu());
 
     delete game;
 
