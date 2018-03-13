@@ -62,7 +62,7 @@ bool Game::menu() {
     do {
         system("clear");
 
-        std::cout << "BlackJack\n\n";
+        std::cout << "Black Jack\n\n";
 
         std::cout << "[1] Play Game\n";
         std::cout << "\n[0] Exit\n";
@@ -71,14 +71,57 @@ bool Game::menu() {
         std::cin >> choice;
     } while(choice != 0 && (choice < 1 || choice > 1));
 
+    int diff_choice;
+    std::string diff_str;
+
     switch(choice) {
     case 1:
         // Play Game
-        std::cout << "play game\n";
+
+        do {
+            system("clear");
+
+            std::cout << "Black Jack\n\n";
+
+            std::cout << "Select diffiulty\n";
+            std::cout << "1 - Easy\n";      // 50 - 50
+            std::cout << "2 - Normal\n";    // Based on the whole deck
+            std::cout << "3 - Medium\n";      // Keeps track of the drawn deck
+            std::cout << "4 - Hard\n"; // Cheats (looks if he loses)
+            std::cout << "\n>> ";
+
+            std::cin >> diff_choice;
+
+        } while(diff_choice < 1 || diff_choice > 4);
+        this->setDiff(diff_choice);
+
+
+        switch(diff_choice) {
+        case 1:
+            diff_str = "Easy";
+            break;
+        case 2:
+            diff_str = "Normal";
+            break;
+        case 3:
+            diff_str = "Medium";
+            break;
+        case 4:
+            diff_str = "Hard";
+            break;
+        default:
+            std::cout << "Not a possible choice\n";
+            diff_str = "Error";
+            break;
+        }
+
+        std::cout << "\nDifficulty set to " << diff_str << std::endl;
         std::cin.ignore().get();
+
         break;
     case 0:
         // Exit
+        system("clear");
         std::cout << "Thanks for playing!\n";
         return false;
     default:
