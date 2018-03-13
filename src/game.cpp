@@ -5,8 +5,11 @@
 Game::Game() {
     // Set defaults
     this->diff = 2;
+    this->turns = 0;
 
     this->player = new Player();
+    this->player->setAi(false);
+
     this->dealer = new Player("Dealer");
 
     this->deck = new Deck();
@@ -37,6 +40,10 @@ Deck* Game::getDeck() {
     return this->deck;
 }
 
+int Game::getTurns() {
+    return this->turns;
+}
+
 // Setters
 void Game::setDiff(int diff) {
     this->diff = diff;
@@ -54,6 +61,10 @@ void Game::setDeck(Deck* deck) {
     this->deck = deck;
 }
 
+void Game::setTurns(int turns) {
+    this->turns = turns;
+}
+
 // Functions
 bool Game::menu() {
 
@@ -65,28 +76,34 @@ bool Game::menu() {
         std::cout << "Black Jack\n\n";
 
         std::cout << "[1] Play Game\n";
+        std::cout << "[2] Set Difficulty (default: normal)\n";
+
         std::cout << "\n[0] Exit\n";
         std::cout << ">> ";
 
         std::cin >> choice;
-    } while(choice != 0 && (choice < 1 || choice > 1));
+    } while(choice != 0 && (choice < 1 || choice > 2));
 
     int diff_choice;
     std::string diff_str;
 
     switch(choice) {
     case 1:
-        // Play Game
+        // play game
+        this->game_init();
+        break;
+    case 2:
+        // set difficulty
 
         do {
             system("clear");
 
             std::cout << "Black Jack\n\n";
 
-            std::cout << "Select diffiulty\n";
-            std::cout << "1 - Easy\n";      // 50 - 50
-            std::cout << "2 - Normal\n";    // Based on the whole deck
-            std::cout << "3 - Medium\n";      // Keeps track of the drawn deck
+            std::cout << "Select difficulty\n";
+            std::cout << "1 - Easy\n"; // 50 - 50
+            std::cout << "2 - Normal\n"; // Based on the whole deck
+            std::cout << "3 - Medium\n"; // Keeps track of the drawn deck
             std::cout << "4 - Hard\n"; // Cheats (looks if he loses)
             std::cout << "\n>> ";
 
@@ -130,4 +147,17 @@ bool Game::menu() {
     }
 
     return true;
+}
+
+void Game::game_init() {
+    std::cout << this->getPlayer()->getName() << "'s turn.\n\n";
+
+    do {
+        this->getPlayer()->draw(*this->getDeck());
+    } while(this->getPlayer()->handPoints() < 21);
+
+    std::cout << "Hand Points(" << this->getPlayer()->handPoints() << ")\n";
+    this->getPlayer()->displayHand();
+
+    std::cin.ignore().get();
 }
