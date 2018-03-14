@@ -150,14 +150,76 @@ bool Game::menu() {
 }
 
 void Game::game_init() {
-    std::cout << this->getPlayer()->getName() << "'s turn.\n\n";
+    system("clear");
+
+    // Call the Constructors
+    Game();
+
+    // Player gets a card
+    this->getPlayer()->draw(*this->getDeck());
+    std::cout << this->getPlayer()->getName() << " gets first card\nHand:\n";
+    for(int i = this->getPlayer()->handSize() - 1; i >= 0; i--) {
+      this->getPlayer()->getCard(i).display();
+    } std::cout << std::endl;
+
+    // Dealer gets a card
+    this->getDealer()->draw(*this->getDeck());
+    std::cout << this->getDealer()->getName() << " gets first card\nHand:\n";
+    for(int i = this->getDealer()->handSize() - 1; i >= 0; i--) {
+      this->getDealer()->getCard(i).display();
+    } std::cout << std::endl;
+
+    // Player gets a second card
+    this->getPlayer()->draw(*this->getDeck());
+    std::cout << this->getPlayer()->getName() << " gets second card\nHand:\n";
+    for(int i = this->getPlayer()->handSize() - 1; i >= 0; i--) {
+      this->getPlayer()->getCard(i).display();
+    } std::cout << std::endl;
+
+    // Dealer gets a second card
+    this->getDealer()->draw(*this->getDeck());
+    std::cout << this->getDealer()->getName() << " gets second card\nHand:\n";
+    std::cout << "Card: *Faced Down*\n";
+    for(int i = this->getDealer()->handSize() - 2; i >= 0; i--) {
+      this->getDealer()->getCard(i).display();
+    }
+    std::cout << "\n*******************************\n\n";
+
+    std::cout << this->getPlayer()->getName() << "'s turn\n";
+    std::cout << this->getPlayer()->handPoints() << " points\n\n";
+    for(int i = this->getPlayer()->handSize() - 1; i >= 0; i--) {
+      this->getPlayer()->getCard(i).display();
+    } std::cout << std::endl;
+
+    char hit;
 
     do {
-        this->getPlayer()->draw(*this->getDeck());
-    } while(this->getPlayer()->handPoints() < 21);
+      if(this->getPlayer()->handPoints() < 21) {
+        do {
+          std::cout << "Hit(y/n): ";
+          std::cin >> hit;
+        } while(hit != 'y' && hit != 'n' && hit != 'Y' && hit != 'N');
+        std::cout << std::endl;
 
-    std::cout << "Hand Points(" << this->getPlayer()->handPoints() << ")\n";
-    this->getPlayer()->displayHand();
+        if(hit == 'y' || hit == 'Y') {
+          // Player draw
+          this->getPlayer()->draw(*this->getDeck());
+
+          std::cout << this->getPlayer()->handPoints() << " points\n\n";
+
+          std::cout << this->getPlayer()->getName() << " draw\nHand:\n";
+          for(int i = this->getPlayer()->handSize() - 1; i >= 0; i--) {
+            this->getPlayer()->getCard(i).display();
+          } std::cout << std::endl;
+        }
+
+        if(this->getPlayer()->handPoints() == 21) {
+          std::cout << "Black Jack!\n";
+        } else if(this->getPlayer()->handPoints() > 21) {
+          std::cout << "Busted!\n";
+        }
+      }
+    } while(hit != 'n' && hit != 'N' && this->getPlayer()->handPoints() < 21);
 
     std::cin.ignore().get();
 }
